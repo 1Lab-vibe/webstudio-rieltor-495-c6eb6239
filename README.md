@@ -1,2 +1,3 @@
-# webstudio-rieltor-495-c6eb6239
-Web Studio landing for Риэлтор 495
+# Welcome to your Lovable project
+
+TODO: Document your project here
