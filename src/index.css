@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Niche palette: realtor — deep navy + warm gold */
+    --background: 222 38% 9%;
+    --foreground: 210 20% 97%;
+
+    --card: 220 30% 13%;
+    --card-foreground: 210 20% 97%;
+
+    --popover: 220 30% 13%;
+    --popover-foreground: 210 20% 97%;
+
+    --primary: 38 50% 58%;            /* gold #cba35a */
+    --primary-foreground: 222 38% 9%;
+
+    --secondary: 220 25% 18%;
+    --secondary-foreground: 210 20% 97%;
+
+    --muted: 220 22% 17%;
+    --muted-foreground: 215 16% 70%;
+
+    --accent: 213 100% 75%;           /* soft blue #7eb8ff */
+    --accent-foreground: 222 38% 9%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 210 20% 97%;
+
+    --border: 220 20% 22%;
+    --input: 220 20% 22%;
+    --ring: 38 50% 58%;
+
+    --radius: 0.75rem;
+
+    --gold-grad: linear-gradient(135deg, hsl(38 60% 65%), hsl(38 50% 48%));
+    --shadow-soft: 0 20px 60px -20px hsl(220 50% 4% / 0.6);
+    --shadow-gold: 0 10px 30px -10px hsl(38 50% 40% / 0.4);
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: 'ss01', 'cv11';
+  }
+  h1, h2, h3, h4 {
+    font-family: 'Manrope', system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    background: var(--gold-grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .surface {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+  }
+  .ring-gold { box-shadow: var(--shadow-gold); }
+
+  @keyframes draw {
+    to { stroke-dashoffset: 0; }
+  }
+  .animate-draw path, .animate-draw line, .animate-draw circle {
+    stroke-dasharray: 600;
+    stroke-dashoffset: 600;
+    animation: draw 2.4s ease-out forwards;
+  }
+  @keyframes pulse-dot {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: .5; transform: scale(1.4); }
+  }
+  .pulse-dot { animation: pulse-dot 1.8s ease-in-out infinite; transform-origin: center; }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up { animation: fade-up .7s ease-out both; }
+}
